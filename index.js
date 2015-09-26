@@ -1,5 +1,5 @@
 'use strict';
-var isObj = require('is-obj');
+var isPlainObj = require('is-plain-obj');
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
@@ -24,7 +24,7 @@ function base(to, from) {
 
 			if (Array.isArray(val)) {
 				to[key] = val.slice();
-			} else if (isObj(val)) {
+			} else if (isPlainObj(val)) {
 				to[key] = base(to[key] || {}, val);
 			} else if (val !== undefined) {
 				to[key] = val;
